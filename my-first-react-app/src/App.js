@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import Eventlist from './components/Eventlist'
+import NewEventForm from './components/NewEventForm'
 
 //use
 
@@ -14,13 +15,14 @@ function App() {
   // const [name, setName] = useState('mario')
   const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState([
-    {title: "mario's birsthday bash", id: 1},
-    {title: "browser's live stream", id: 2},
-    {title: "race on moo moo farm", id: 3}
-  ])
+  const [events, setEvents] = useState([])
 
-  console.log(showEvents)
+ const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+    setShowModal(false)
+ }
 
   const handleClick = (id) => {
     setEvents((prevEvents) => {
@@ -63,13 +65,14 @@ function App() {
             <h2>10% off coupon code</h2>
             <p>use the code ninja10 at the checkout</p>
         </Modal> */}
-        {showModal && <Modal handleClose={handleClose}>
-          <h2>tianbo zhendi shuai</h2>
+        {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
+          <NewEventForm addEvent={addEvent}/>
+          <h2>陆游</h2>
           <p>伤心桥下春波绿，曾是惊鸿照影来</p>
           <a href='https://github.com/'> find out more </a> 
         </Modal>}
         <div>
-          <button onClick={() => setShowModal(true)}>show modal</button>
+          <button onClick={() => setShowModal(true)}>Add New Event</button>
         </div>
 
     </div>
