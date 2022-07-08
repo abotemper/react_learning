@@ -15,6 +15,10 @@ const themeReducer = (state, action) => {
 
 export function ThemeProvider({ children }){
     // usereducer的第二个参数是初始化的值或者状态
+    //reducer就是一个对象，第一个参数是一个函数，这个函数决定着如何改变这个对象，决定着dispatch的形式
+    //第二个参数是带有初始值的对象，
+    //实际改变的时候使用dispatch
+
     const [state, dispatch] = useReducer(themeReducer, {
         color: '#58249c',
         mode: 'dark'
@@ -35,3 +39,6 @@ export function ThemeProvider({ children }){
         </ThemeContext.Provider>
     )
 }
+//多重路线
+//我的位置
+//暗黑模式
