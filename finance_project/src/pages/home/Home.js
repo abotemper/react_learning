@@ -5,7 +5,7 @@ import TransactionList from './TransactionList'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 
-
+// ["uid", "==", user.uid]
 export default function Home() {
   const { user } = useAuthContext()
   const { documents, error } = useCollection(
